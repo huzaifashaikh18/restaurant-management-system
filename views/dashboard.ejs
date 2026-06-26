@@ -1,0 +1,59 @@
+<%- include('partials/header') %>
+<%- include('partials/navbar') %>
+
+<div class="flash-container">
+    <% if (error.length > 0) { %>
+        <div class="alert alert-error" style="margin-top:1rem;">⚠️ <%= error %></div>
+    <% } %>
+    <% if (success.length > 0) { %>
+        <div class="alert alert-success" style="margin-top:1rem;">✅ <%= success %></div>
+    <% } %>
+</div>
+
+<div class="dashboard-page">
+
+    <!-- Welcome Banner -->
+    <div class="welcome-banner">
+        <div>
+            <h3>Welcome back, <%= user.name %>! 👋</h3>
+            <p>What would you like to do today?
+                <span class="role-badge"><%= user.role %></span>
+            </p>
+        </div>
+        <div class="banner-icon">
+            <i class="fa-solid fa-utensils"></i>
+        </div>
+    </div>
+
+    <!-- Dashboard Cards -->
+    <div class="dashboard-grid">
+        <div class="dashboard-card">
+            <i class="fa-solid fa-bowl-food card-icon"></i>
+            <h5>Browse Menu</h5>
+            <p>Explore our delicious dishes</p>
+            <a href="/menu">View Menu</a>
+        </div>
+        <div class="dashboard-card">
+            <i class="fa-solid fa-calendar-days card-icon"></i>
+            <h5>My Reservations</h5>
+            <p>Manage your table bookings</p>
+            <a href="/reservations">View</a>
+        </div>
+        <div class="dashboard-card">
+            <i class="fa-solid fa-bag-shopping card-icon"></i>
+            <h5>My Orders</h5>
+            <p>Track your food orders</p>
+            <a href="/orders">View</a>
+        </div>
+        <% if (user.role === 'admin') { %>
+        <div class="dashboard-card">
+            <i class="fa-solid fa-gauge card-icon"></i>
+            <h5>Admin Panel</h5>
+            <p>Manage restaurant operations</p>
+            <a href="/admin">Go to Admin</a>
+        </div>
+        <% } %>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

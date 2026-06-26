@@ -1,38 +1,68 @@
 require('dotenv').config();
-const express = require('express')
-const rateLimit = require('express-rate-limit')
-const logger = require('./utils/logger');
+const express        = require('express');
+const session        = require('express-session');
+const flash          = require('connect-flash');
+const methodOverride = require('method-override');
+const path           = require('path');
+const logger         = require('./utils/logger');
+const authRoutes     = require('./routes/authroutes');
 
-// Pending errorHandler
 const app = express();
-if (process.env.NODE_ENV === 'production') {
-    app.set('trust proxy', 1);
-}
 
-if(process.env.NODE_ENV != 'production'){
-    app.use((req,res,next)=>{
-        logger.debug(`${req.files} ${req.baseUrl}`);
-        next();
-    })
-}
+// ─── VIEW ENGINE ─────────────────────────────────────────────────────────────
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
+// ─── STATIC FILES ────────────────────────────────────────────────────────────
+app.use(express.static(path.join(__dirname, 'public')));
 
-
-// Helmet Integration Pending
-
+// ─── BODY PARSER ─────────────────────────────────────────────────────────────
 app.use(express.json());
-app.use(express.urlencoded({extended : true, limit : '10kb'}));
+app.use(express.urlencoded({ extended: true }));
 
+// ─── METHOD OVERRIDE ─────────────────────────────────────────────────────────
+app.use(methodOverride('_method'));
 
+// ─── SESSION ─────────────────────────────────────────────────────────────────
+app.use(session({
+    secret           : process.env.SESSION_SECRET || 'restaurant_secret',
+    resave           : false,
+    saveUninitialized: false,
+    cookie           : { maxAge: 1000 * 60 * 60 * 24 } // 1 day
+}));
 
-const globalLimiter = rateLimit({
-    windowMs : parseInt(process.env.RATE_LIMIT_WINDOW_MS,10) || 15 * 60 * 1000,
-    max : parseInt(process.env.RATE_LIMIT_MAX,10)|| 100,
-    standardHeaders:true,
-    legacyHeaders : false,
-    message : {status: 'fail', message : 'Too many requests. Please try again'}
-})
+// ─── FLASH MESSAGES ──────────────────────────────────────────────────────────
+app.use(flash());
 
-//Pending errorHandler.
+// ─── GLOBAL VARIABLES ────────────────────────────────────────────────────────
+app.use((req, res, next) => {
+    res.locals.success = req.flash('success');
+    res.locals.error   = req.flash('error');
+    res.locals.user    = req.session.user || null;
+    next();
+});
+
+// ─── LOGGER (Dev only) ───────────────────────────────────────────────────────
+if (process.env.NODE_ENV !== 'production') {
+    app.use((req, res, next) => {
+        logger.debug(`${req.method} ${req.url}`);
+        next();
+    });
+}
+
+// ─── ROUTES ──────────────────────────────────────────────────────────────────
+app.use('/', authRoutes);
+
+// ─── 404 HANDLER ─────────────────────────────────────────────────────────────
+app.use((req, res) => {
+    res.status(404).render('404', { title: 'Page Not Found' });
+});
+
+// ─── GLOBAL ERROR HANDLER ────────────────────────────────────────────────────
+app.use((err, req, res, next) => {
+    logger.error(err.message);
+    req.flash('error', err.message || 'Something went wrong');
+    res.redirect('back');
+});
 
 module.exports = app;

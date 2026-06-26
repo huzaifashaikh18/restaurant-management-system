@@ -1,0 +1,12 @@
+<nav class="navbar">
+    <a href="/" class="navbar-brand">🍽️ Restaurant</a>
+    <div class="navbar-links">
+        <% if (user) { %>
+            <span class="navbar-user">Hello, <%= user.name %>!</span>
+            <a href="/logout" class="btn-logout">Logout</a>
+        <% } else { %>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        <% } %>
+    </div>
+</nav>
