@@ -1,7 +1,10 @@
 <nav class="navbar">
-    <a href="/" class="navbar-brand">🍽️ Restaurant</a>
+    <a href="/" class="navbar-brand"><i class="fa-solid fa-utensils"></i> Restaurant</a>
     <div class="navbar-links">
+        <a href="/">Home</a>
+        <a href="/menu">Menu</a>
         <% if (user) { %>
+            <a href="/dashboard">Dashboard</a>
             <span class="navbar-user">Hello, <%= user.name %>!</span>
             <a href="/logout" class="btn-logout">Logout</a>
         <% } else { %>

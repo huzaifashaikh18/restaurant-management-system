@@ -6,6 +6,7 @@ const methodOverride = require('method-override');
 const path           = require('path');
 const logger         = require('./utils/logger');
 const authRoutes     = require('./routes/authroutes');
+const homeRoutes = require('./routes/homeRoutes');
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 // ─── STATIC FILES ────────────────────────────────────────────────────────────
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 // ─── BODY PARSER ─────────────────────────────────────────────────────────────
 app.use(express.json());
@@ -52,7 +54,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 // ─── ROUTES ──────────────────────────────────────────────────────────────────
 app.use('/', authRoutes);
-
+app.use('/', homeRoutes);
 // ─── 404 HANDLER ─────────────────────────────────────────────────────────────
 app.use((req, res) => {
     res.status(404).render('404', { title: 'Page Not Found' });

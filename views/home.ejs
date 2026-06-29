@@ -1,0 +1,76 @@
+<%- include('partials/header') %>
+<%- include('partials/navbar') %>
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Welcome to <span>Our Restaurant</span></h1>
+        <p>Authentic flavors, fresh ingredients, made with love — every single day.</p>
+        <div class="hero-buttons">
+            <a href="/menu" class="btn-hero btn-hero-primary">
+                <i class="fa-solid fa-utensils"></i> Explore Menu
+            </a>
+            <a href="/reservations" class="btn-hero btn-hero-outline">
+                <i class="fa-solid fa-calendar-check"></i> Reserve a Table
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+    <div class="feature-box">
+        <i class="fa-solid fa-leaf"></i>
+        <h4>Fresh Ingredients</h4>
+        <p>Sourced daily for the best taste and quality.</p>
+    </div>
+    <div class="feature-box">
+        <i class="fa-solid fa-calendar-days"></i>
+        <h4>Easy Table Booking</h4>
+        <p>Reserve your table online in just a few clicks.</p>
+    </div>
+    <div class="feature-box">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <h4>Order Online</h4>
+        <p>Browse the menu and place your order from anywhere.</p>
+    </div>
+</section>
+
+<!-- POPULAR DISHES -->
+<section class="popular-dishes">
+    <h2 class="section-title">Popular Dishes</h2>
+    <p class="section-subtitle">A taste of what's waiting for you</p>
+
+    <div class="dish-grid">
+        <% if (menuItems && menuItems.length > 0) { %>
+            <% menuItems.forEach(item => {
+                let icon = 'fa-bowl-rice';
+                if (item.category === 'Drinks') icon = 'fa-mug-hot';
+                else if (item.category === 'Desserts') icon = 'fa-ice-cream';
+                else if (item.category === 'Starters') icon = 'fa-pepper-hot';
+            %>
+                <div class="dish-card">
+                    <div class="dish-icon"><i class="fa-solid <%= icon %>"></i></div>
+                    <h5><%= item.name %></h5>
+                    <p><%= item.description %></p>
+                    <span class="dish-price">₹<%= item.price %></span>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p style="color:#9ca3af;">Menu coming soon — check back shortly!</p>
+        <% } %>
+    </div>
+
+    <div class="view-all">
+        <a href="/menu" class="btn-hero btn-hero-primary">View Full Menu</a>
+    </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+    <h2>Hungry already?</h2>
+    <p>Book your table now and enjoy a memorable dining experience.</p>
+    <a href="/reservations" class="btn-hero btn-hero-light">Book a Table</a>
+</section>
+
+<%- include('partials/footer') %>
