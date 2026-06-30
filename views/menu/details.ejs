@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+
+<div class="item-details-page">
+    <div class="item-details-card">
+        <div class="item-details-img">
+            <i class="fa-solid fa-bowl-food"></i>
+        </div>
+        <div class="item-details-body">
+            <span class="menu-category-tag"><%= item.category %></span>
+            <h2><%= item.name %></h2>
+            <p class="item-description"><%= item.description %></p>
+            <div class="item-price">₹<%= item.price %></div>
+
+            <% if (user) { %>
+                <button class="btn-primary" style="margin-top:1rem;">Add to Order</button>
+            <% } else { %>
+                <a href="/login" class="btn-primary" style="display:block; text-align:center; margin-top:1rem;">Login to Order</a>
+            <% } %>
+
+            <a href="/menu" class="back-link">← Back to Menu</a>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

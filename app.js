@@ -6,7 +6,8 @@ const methodOverride = require('method-override');
 const path           = require('path');
 const logger         = require('./utils/logger');
 const authRoutes     = require('./routes/authroutes');
-const homeRoutes = require('./routes/homeRoutes');
+const homeRoutes     = require('./routes/homeRoutes');
+const menuRoutes     = require('./routes/menuRoutes');
 
 const app = express();
 
@@ -55,6 +56,7 @@ if (process.env.NODE_ENV !== 'production') {
 // ─── ROUTES ──────────────────────────────────────────────────────────────────
 app.use('/', authRoutes);
 app.use('/', homeRoutes);
+app.use('/', menuRoutes);
 // ─── 404 HANDLER ─────────────────────────────────────────────────────────────
 app.use((req, res) => {
     res.status(404).render('404', { title: 'Page Not Found' });
