@@ -1,0 +1,48 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+
+<div class="flash-container">
+    <% if (error.length > 0) { %>
+        <div class="alert alert-error">⚠️ <%= error %></div>
+    <% } %>
+    <% if (success.length > 0) { %>
+        <div class="alert alert-success">✅ <%= success %></div>
+    <% } %>
+</div>
+
+<div class="reservation-page">
+    <div class="menu-header">
+        <h2>My Reservations</h2>
+        <p>All your table bookings in one place</p>
+    </div>
+
+    <% if (reservations.length === 0) { %>
+        <p style="text-align:center; color:#888; margin-top:2rem;">
+            No reservations yet. <a href="/reservations">Book your first table →</a>
+        </p>
+    <% } else { %>
+        <div class="reservation-list">
+            <% reservations.forEach(r => { %>
+                <div class="reservation-item">
+                    <div class="reservation-item-info">
+                        <span class="status-badge status-<%= r.status.toLowerCase() %>"><%= r.status %></span>
+                        <h5><%= r.date.toDateString() %> at <%= r.time %></h5>
+                        <p><i class="fa-solid fa-users"></i> <%= r.guests %> guests &nbsp;|&nbsp; <i class="fa-solid fa-phone"></i> <%= r.phone %></p>
+                        <% if (r.specialRequest) { %>
+                            <p class="reservation-note">"<%= r.specialRequest %>"</p>
+                        <% } %>
+                    </div>
+                    <% if (r.status !== 'Cancelled') { %>
+                        <form action="/reservations/<%= r._id %>/cancel" method="POST">
+                            <button type="submit" class="btn-cancel" onclick="return confirm('Cancel this reservation?')">Cancel</button>
+                        </form>
+                    <% } %>
+                </div>
+            <% }) %>
+        </div>
+    <% } %>
+
+    <a href="/reservations" class="back-link" style="display:block; text-align:center; margin-top:1.5rem;">← Book Another Table</a>
+</div>
+
+<%- include('../partials/footer') %>

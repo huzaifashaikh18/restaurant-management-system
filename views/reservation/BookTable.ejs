@@ -1,0 +1,70 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+
+<div class="flash-container">
+    <% if (error.length > 0) { %>
+        <div class="alert alert-error">⚠️ <%= error %></div>
+    <% } %>
+    <% if (success.length > 0) { %>
+        <div class="alert alert-success">✅ <%= success %></div>
+    <% } %>
+</div>
+
+<div class="reservation-page">
+    <div class="reservation-card">
+        <div class="reservation-header">
+            <h2>Reserve a Table</h2>
+            <p>Book your table in seconds — we'll confirm shortly</p>
+        </div>
+
+        <form action="/reservations" method="POST" class="reservation-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" value="<%= user ? user.name : '' %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="time">Time</label>
+                    <select id="time" name="time" required>
+                        <option value="">Select time</option>
+                        <option value="12:00 PM">12:00 PM</option>
+                        <option value="1:00 PM">1:00 PM</option>
+                        <option value="2:00 PM">2:00 PM</option>
+                        <option value="7:00 PM">7:00 PM</option>
+                        <option value="8:00 PM">8:00 PM</option>
+                        <option value="9:00 PM">9:00 PM</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="guests">Number of Guests</label>
+                <input type="number" id="guests" name="guests" min="1" max="20" value="2" required>
+            </div>
+
+            <div class="form-group">
+                <label for="specialRequest">Special Request (optional)</label>
+                <textarea id="specialRequest" name="specialRequest" rows="3" placeholder="Birthday, anniversary, seating preference..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-hero btn-hero-primary" style="width:100%; justify-content:center;">
+                <i class="fa-solid fa-calendar-check"></i> Confirm Reservation
+            </button>
+        </form>
+
+        <a href="/reservations/my" class="back-link" style="display:block; text-align:center; margin-top:1.2rem;">View My Reservations →</a>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>
