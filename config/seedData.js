@@ -254,7 +254,7 @@ const menuItems = [
         description: 'Stir fried noodles with vegetables in Indo-Chinese style',
         price      : 280,
         category   : 'Chinese',
-        image      : 'https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyOwPEDZ3hWXDeq-pnuQoh65jVAb2bu1MDIjkxxzFL-w&s=10',
         isAvailable: true,
     },
     {
@@ -270,7 +270,7 @@ const menuItems = [
         description: 'Crispy vegetable balls in spicy tangy Manchurian gravy',
         price      : 300,
         category   : 'Chinese',
-        image      : 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&auto=format&fit=crop',
+        image      : 'https://myfoodstory.com/wp-content/uploads/2021/10/Veg-Manchurian-FI-1.jpg',
         isAvailable: true,
     },
     {
@@ -278,7 +278,7 @@ const menuItems = [
         description: 'Crispy paneer tossed with bell peppers in spicy Indo-Chinese sauce',
         price      : 340,
         category   : 'Chinese',
-        image      : 'https://images.unsplash.com/photo-1567188040759-fb8a883dc6d6?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7mnoAa2pGd3TmpmZejtNE-vgG9Rb0P-gSJUxZ9g4tMA&s=10',
         isAvailable: true,
     },
 
@@ -304,7 +304,7 @@ const menuItems = [
         description: 'Toasted baguette with herb butter and roasted garlic',
         price      : 180,
         category   : 'Italian',
-        image      : 'https://images.unsplash.com/photo-1573140247632-f8fd74997d5c?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoAx2j-1dGVlHPrHL5127qHLBUcBd4_-ADxatDekZtDxJYf8iaVieM7Sk&s=10',
         isAvailable: true,
     },
 
@@ -348,7 +348,7 @@ const menuItems = [
         description: 'Crispy veg patty with lettuce tomato onion and special sauce',
         price      : 220,
         category   : 'Burgers',
-        image      : 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs2crwXiSeYyWF3b7OjMVJJ_p6q-7X5mD426LOLnIcqA&s=10',
         isAvailable: true,
     },
     {
@@ -356,7 +356,7 @@ const menuItems = [
         description: 'Double cheese burger with crispy patty and special mayo sauce',
         price      : 280,
         category   : 'Burgers',
-        image      : 'https://images.unsplash.com/photo-1550317138-10000687a72b?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgxSv76_3d4__bXrCFLvkIdkPVCuFVB0q3pSsvkLJSaQ&s=10',
         isAvailable: true,
     },
     {
@@ -374,7 +374,7 @@ const menuItems = [
         description: 'Fragrant basmati rice with vegetables and whole spices — dum style',
         price      : 320,
         category   : 'Rice & Biryani',
-        image      : 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm0rqsn1NWCmmqcQGKXXcqRfS_tWWM2-aSInS4gYt_3gqjX9ubo4BVwJTR&s=10',
         isAvailable: true,
     },
     {
@@ -382,7 +382,7 @@ const menuItems = [
         description: 'Authentic Hyderabadi dum biryani with saffron and caramelized onions',
         price      : 420,
         category   : 'Rice & Biryani',
-        image      : 'https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpJc0iICTBA_EqL-XTGgcKmKrpAW_bKgN7JXhZFw8j9A&s=10',
         isAvailable: true,
     },
     {
@@ -390,7 +390,7 @@ const menuItems = [
         description: 'Fragrant basmati rice tempered with cumin seeds and ghee',
         price      : 180,
         category   : 'Rice & Biryani',
-        image      : 'https://images.unsplash.com/photo-1516684732162-798a0062be99?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh3oHzoTksjeuOMy9kMvuoQoDNlLGbOfxYnQ_kDwx9aA&s=10',
         isAvailable: true,
     },
 
@@ -400,7 +400,7 @@ const menuItems = [
         description: 'Soft leavened bread brushed generously with butter',
         price      : 60,
         category   : 'Breads',
-        image      : 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3Zyh75bhLzH4QJbQTlKibw-Rk6DcXDSWcTD5VLAX0SKHzUoHRpwxgDh1n&s=10',
         isAvailable: true,
     },
     {
@@ -408,7 +408,7 @@ const menuItems = [
         description: 'Naan bread topped with roasted garlic and fresh coriander',
         price      : 80,
         category   : 'Breads',
-        image      : 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT25O-t_hxBZ9jsK0CiSivyQ3zDvR3Fta8bGWWrZxGzl-oP3grJND-8aECM&s=10',
         isAvailable: true,
     },
     {
@@ -416,7 +416,7 @@ const menuItems = [
         description: 'Whole wheat bread baked fresh in tandoor',
         price      : 40,
         category   : 'Breads',
-        image      : 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR20AzNvf6oZi3FpvsYhvzyEmuo86TnyqyVaKQyLSX_JNSuFZaja_JyiK4&s=10',
         isAvailable: true,
     },
     {
