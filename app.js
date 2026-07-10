@@ -28,13 +28,22 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
 // ─── SESSION ─────────────────────────────────────────────────────────────────
+const MongoStore = require('connect-mongo')(session);
+
 app.use(session({
     secret           : process.env.SESSION_SECRET || 'restaurant_secret',
     resave           : false,
     saveUninitialized: false,
-    cookie           : { maxAge: 1000 * 60 * 60 * 24 } // 1 day
+    store            : new MongoStore({
+        mongooseConnection: require('mongoose').connection,
+        ttl: 60 * 60 * 24 * 7
+    }),
+    cookie: {
+        maxAge  : 1000 * 60 * 60 * 24 * 7,
+        httpOnly: true,
+        secure  : false
+    }
 }));
-
 // ─── FLASH MESSAGES ──────────────────────────────────────────────────────────
 app.use(flash());
 

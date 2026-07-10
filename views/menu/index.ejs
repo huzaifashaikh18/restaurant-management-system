@@ -11,11 +11,11 @@
     <div class="category-filter">
         <a href="/menu" class="category-btn <%= activeCategory === 'All' ? 'active' : '' %>">All</a>
         <% categories.forEach(cat => { %>
-            <a href="/menu?category=<%= cat %>" 
-               class="category-btn <%= activeCategory === cat ? 'active' : '' %>">
-               <%= cat %>
+            <a href="/menu?category=<%= encodeURIComponent(cat) %>" 
+                class="category-btn <%= activeCategory === cat ? 'active' : '' %>">
+                <%= cat %>
             </a>
-        <% }) %>
+            <% }) %>
     </div>
 
     <!-- Menu Grid -->

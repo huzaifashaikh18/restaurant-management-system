@@ -16,9 +16,14 @@ const menuItemSchema = new mongoose.Schema(
             required: [true, 'Price is required'],
         },
         category: {
-            type   : String,
-            enum   : ['Gujarati', 'Starters', 'Main Course', 'Breads', 'Rice', 'Desserts', 'Drinks'],
-            default: 'Main Course',
+            type: String,
+            enum: [
+                'Chefs Special', 'Starters', 'Soups', 'Salads',
+                'Gujarati', 'Punjabi', 'Chinese', 'Italian',
+                'Pizza', 'Burgers', 'Rice & Biryani', 'Breads',
+                'Desserts', 'Mocktails', 'Coffee', 'Fresh Juice', 'Ice Cream'
+                ],
+                default: 'Starters',
         },
         image: {
             type   : String,
