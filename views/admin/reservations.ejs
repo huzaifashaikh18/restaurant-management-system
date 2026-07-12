@@ -1,0 +1,50 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+
+<div class="flash-container">
+    <% if (error.length > 0) { %>
+        <div class="alert alert-error">⚠️ <%= error %></div>
+    <% } %>
+    <% if (success.length > 0) { %>
+        <div class="alert alert-success">✅ <%= success %></div>
+    <% } %>
+</div>
+
+<div class="admin-page">
+    <div class="admin-header">
+        <h2>All Reservations</h2>
+    </div>
+
+    <% if (reservations.length === 0) { %>
+        <p style="text-align:center; color:#888; margin-top:2rem;">No reservations yet.</p>
+    <% } else { %>
+        <div class="reservation-list">
+            <% reservations.forEach(r => { %>
+                <div class="reservation-item">
+                    <div class="reservation-item-info">
+                        <span class="status-badge status-<%= r.status.toLowerCase() %>"><%= r.status %></span>
+                        <h5><%= r.name %> — <%= r.date.toDateString() %> at <%= r.time %></h5>
+                        <p>
+                            <i class="fa-solid fa-users"></i> <%= r.guests %> guests &nbsp;|&nbsp;
+                            <i class="fa-solid fa-phone"></i> <%= r.phone %> &nbsp;|&nbsp;
+                            <i class="fa-solid fa-envelope"></i> <%= r.user ? r.user.email : 'N/A' %>
+                        </p>
+                        <% if (r.specialRequest) { %>
+                            <p class="reservation-note">"<%= r.specialRequest %>"</p>
+                        <% } %>
+                    </div>
+                    <form action="/admin/reservations/<%= r._id %>?_method=PUT" method="POST" style="display:flex; gap:0.5rem; align-items:center;">
+                        <select name="status" style="padding:0.4rem 0.8rem; border-radius:8px; border:2px solid #e5e7eb;">
+                            <option value="Pending"   <%= r.status === 'Pending'   ? 'selected' : '' %>>Pending</option>
+                            <option value="Confirmed" <%= r.status === 'Confirmed' ? 'selected' : '' %>>Confirmed</option>
+                            <option value="Cancelled" <%= r.status === 'Cancelled' ? 'selected' : '' %>>Cancelled</option>
+                        </select>
+                        <button type="submit" class="btn-edit">Update</button>
+                    </form>
+                </div>
+            <% }) %>
+        </div>
+    <% } %>
+</div>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,50 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+
+<div class="flash-container">
+    <% if (error.length > 0) { %>
+        <div class="alert alert-error">⚠️ <%= error %></div>
+    <% } %>
+    <% if (success.length > 0) { %>
+        <div class="alert alert-success">✅ <%= success %></div>
+    <% } %>
+</div>
+
+<div class="admin-page">
+    <div class="admin-header">
+        <h2>Manage Users</h2>
+    </div>
+
+    <div class="admin-table-wrapper">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Joined</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% users.forEach(u => { %>
+                    <tr>
+                        <td><strong><%= u.name %></strong></td>
+                        <td><%= u.email %></td>
+                        <td>
+                            <span class="role-badge"><%= u.role %></span>
+                        </td>
+                        <td>
+                            <span class="status-badge <%= u.isActive ? 'status-confirmed' : 'status-cancelled' %>">
+                                <%= u.isActive ? 'Active' : 'Inactive' %>
+                            </span>
+                        </td>
+                        <td><%= u.createdAt.toDateString() %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

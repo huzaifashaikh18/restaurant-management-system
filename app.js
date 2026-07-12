@@ -9,6 +9,8 @@ const authRoutes        = require('./routes/authroutes');
 const homeRoutes        = require('./routes/homeRoutes');
 const menuRoutes        = require('./routes/menuRoutes');
 const reservationRoutes = require('./routes/reservationRoutes');
+const adminRoutes       = require('./routes/adminRoutes');
+const orderRoutes       = require('./routes/orderRoutes');
 
 const app = express();
 
@@ -35,7 +37,7 @@ app.use(session({
     resave           : false,
     saveUninitialized: false,
     store            : new MongoStore({
-        mongooseConnection: require('mongoose').connection,
+        url: process.env.DATABASE_URI || 'mongodb://localhost:27017/restaurant_db',
         ttl: 60 * 60 * 24 * 7
     }),
     cookie: {
@@ -68,6 +70,8 @@ app.use('/', authRoutes);
 app.use('/', homeRoutes);
 app.use('/', menuRoutes);
 app.use('/', reservationRoutes);
+app.use('/admin', adminRoutes);
+app.use('/', orderRoutes);
 // ─── 404 HANDLER ─────────────────────────────────────────────────────────────
 app.use((req, res) => {
     res.status(404).render('404', { title: 'Page Not Found' });

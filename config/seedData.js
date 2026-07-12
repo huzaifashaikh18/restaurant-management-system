@@ -110,7 +110,7 @@ const menuItems = [
         description: 'Thick sweet corn soup with vegetables and egg drop style',
         price      : 160,
         category   : 'Soups',
-        image      : 'https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?w=400&auto=format&fit=crop',
+        image      : 'https://healthylivingjames.co.uk/wp-content/uploads/2025/03/Chicken-and-Sweetcorn-Soup-Square.jpg',
         isAvailable: true,
     },
     {
@@ -118,7 +118,7 @@ const menuItems = [
         description: 'Spicy Indo-Chinese soup with vegetables and crispy noodles on top',
         price      : 170,
         category   : 'Soups',
-        image      : 'https://images.unsplash.com/photo-1555126634-323283e090fa?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsX5liDj9F6NOCF8jqZJSTXmb6Jt_2smtp8PeuXH-UM4_IXj2B6J5P6tU&s=10',
         isAvailable: true,
     },
     {
@@ -126,7 +126,7 @@ const menuItems = [
         description: 'Velvety smooth mushroom soup with cream and herbs',
         price      : 200,
         category   : 'Soups',
-        image      : 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7XpICj4bKfKQv2QaX4aCDRch-x_6g9NkLsHWsf7Z9CQ&s=10',
         isAvailable: true,
     },
 
@@ -136,7 +136,7 @@ const menuItems = [
         description: 'Crisp romaine lettuce with Caesar dressing, croutons and parmesan',
         price      : 320,
         category   : 'Salads',
-        image      : 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5hXaM_GL-g-dmi-Rx8e9w87H3SaBcfkIkIksfF286Qg&s=10',
         isAvailable: true,
     },
     {
@@ -144,7 +144,7 @@ const menuItems = [
         description: 'Fresh cucumber, tomato, olives and feta cheese with olive oil dressing',
         price      : 280,
         category   : 'Salads',
-        image      : 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5GtBGFky-8hhapI2vuHPrFlbmlZOgAezpyp9ezqMmaw&s=10',
         isAvailable: true,
     },
     {
@@ -152,7 +152,7 @@ const menuItems = [
         description: 'Fresh avocado with mixed greens, cherry tomatoes and lemon vinaigrette',
         price      : 380,
         category   : 'Salads',
-        image      : 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQQZattLb2xMTmqzDEZ08ccu299GtwjNArPJJrLz7VDwwtKgBaRXPP5TY&s=10',
         isAvailable: true,
     },
 
@@ -162,7 +162,7 @@ const menuItems = [
         description: 'Spicy tangy tomato curry topped with crispy sev — no onion no garlic',
         price      : 180,
         category   : 'Gujarati',
-        image      : 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&auto=format&fit=crop',
+        image      : 'https://i.pinimg.com/736x/67/ef/ae/67efae2daa5ac742f72bec477c454b46.jpg',
         isAvailable: true,
     },
     {
@@ -170,7 +170,7 @@ const menuItems = [
         description: 'Roasted eggplant mashed with onion tomato and spices — Gujarati style',
         price      : 200,
         category   : 'Gujarati',
-        image      : 'https://images.unsplash.com/photo-1631452180539-96aca7d48617?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt7Xep4yKHFl4gRVVV1dsrkmZIPTu10dP6LcIwHOBwvl7_w60SG53SB-A&s=10',
         isAvailable: true,
     },
     {
@@ -178,7 +178,7 @@ const menuItems = [
         description: 'Traditional Gujarati winter delicacy with mixed vegetables and fenugreek dumplings',
         price      : 320,
         category   : 'Gujarati',
-        image      : 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_21wixQnIw-XVIVn89h33KMCEFjvfCcY5EVg398S0kQ&s=10',
         isAvailable: true,
     },
     {
@@ -186,7 +186,7 @@ const menuItems = [
         description: 'Baby potatoes cooked in spicy garlic masala — Gujarati special',
         price      : 180,
         category   : 'Gujarati',
-        image      : 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOGBO2Bb6JRbvyBI3_jlDfEw0QZqOa7PpL-ccheOJsG0okYTPKq8JGsr0&s=10',
         isAvailable: true,
     },
     {
@@ -194,7 +194,7 @@ const menuItems = [
         description: 'Sweet and tangy yogurt curry tempered with mustard seeds and curry leaves',
         price      : 150,
         category   : 'Gujarati',
-        image      : 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW1_youBMusuV62z9cQOU4PMFON7IIm945j5r1SUydYw&s=10',
         isAvailable: true,
     },
     {
@@ -202,7 +202,7 @@ const menuItems = [
         description: 'Slow cooked toor dal with ghee tempering and aromatic spices',
         price      : 160,
         category   : 'Gujarati',
-        image      : 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH2V7cDvXm-BM2QLAAPfGCI819kOClRqlMizdn2j1IV7nLn-otFrVkxSo&s=10',
         isAvailable: true,
     },
 
@@ -212,7 +212,7 @@ const menuItems = [
         description: 'Soft paneer in rich creamy tomato gravy — restaurant style',
         price      : 420,
         category   : 'Punjabi',
-        image      : 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwRO9423culvRaDaBBr4Rf0SOpclL3L0s94fC8C-_X5g&s=10',
         isAvailable: true,
     },
     {
@@ -220,7 +220,7 @@ const menuItems = [
         description: 'Paneer and bell peppers cooked in kadai masala with whole spices',
         price      : 400,
         category   : 'Punjabi',
-        image      : 'https://images.unsplash.com/photo-1567188040759-fb8a883dc6d6?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4pDqnyOn5DZaB_O5BZIdhVYBIcGv1tQFEm2x_z6R3-w&s=10',
         isAvailable: true,
     },
     {
@@ -228,7 +228,7 @@ const menuItems = [
         description: 'Slow cooked black lentils in rich buttery tomato gravy — 24 hour cook',
         price      : 380,
         category   : 'Punjabi',
-        image      : 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRiK5jw8V9huVFwUqxNaJq61WE6p-Ac-JpYPUmmmTyFD5ch0snS90Md2kd&s=10',
         isAvailable: true,
     },
     {
@@ -236,7 +236,7 @@ const menuItems = [
         description: 'Spicy chickpea curry in tangy tomato onion gravy with whole spices',
         price      : 320,
         category   : 'Punjabi',
-        image      : 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTu_sERKtKvive2uwKwMceaDFM8pIH6TDNrXwJZOhcRdxdxkDn_yK8A6L-a&s=10',
         isAvailable: true,
     },
     {
@@ -434,7 +434,7 @@ const menuItems = [
         description: 'Soft milk solid balls soaked in rose flavored sugar syrup — served warm',
         price      : 120,
         category   : 'Desserts',
-        image      : 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&auto=format&fit=crop',
+        image      : 'https://i0.wp.com/www.chitrasfoodbook.com/wp-content/uploads/2016/10/gulab-jamun-using-mix.jpg?w=1200&ssl=1',
         isAvailable: true,
     },
     {
@@ -442,7 +442,7 @@ const menuItems = [
         description: 'Soft cottage cheese dumplings in sweetened saffron milk',
         price      : 150,
         category   : 'Desserts',
-        image      : 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_EBVICoLQn8DWlrbO7T47enRA8allUMeHoGcqIzWqgX4oKPt8mzaXeL8&s=10',
         isAvailable: true,
     },
     {
@@ -450,7 +450,7 @@ const menuItems = [
         description: 'Warm chocolate brownie with vanilla ice cream and chocolate sauce',
         price      : 280,
         category   : 'Desserts',
-        image      : 'https://images.unsplash.com/photo-1564355808539-22fda35bed7e?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlUled4g86_CIuDGBngmTUV16mWeQNtJdM65KsE-PCyrZfjLjfqoxW7FN5&s=10',
         isAvailable: true,
     },
     {
@@ -458,7 +458,7 @@ const menuItems = [
         description: 'Warm chocolate cake with molten chocolate center and vanilla ice cream',
         price      : 320,
         category   : 'Desserts',
-        image      : 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDZ-pbuWruYn9L8dof4b4ZQx4ephhnnPQb7lTbjTZWKA&s=10',
         isAvailable: true,
     },
     {
@@ -476,7 +476,7 @@ const menuItems = [
         description: 'Refreshing blue curacao mocktail with lemon and soda',
         price      : 180,
         category   : 'Mocktails',
-        image      : 'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWvA50jdEbSFmG-bh0r5IrsvGlHgvKJAImY-W6oBacQOrVZqBJJwv2DGc&s=10',
         isAvailable: true,
     },
     {
@@ -484,7 +484,7 @@ const menuItems = [
         description: 'Fresh mint lime and soda — classic refreshing mocktail',
         price      : 160,
         category   : 'Mocktails',
-        image      : 'https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxve_ER1I5PYDZSQRnasSf1PM4b3Cth2FqvI2F8y5mEw&s=10',
         isAvailable: true,
     },
     {
@@ -492,7 +492,7 @@ const menuItems = [
         description: 'Fresh strawberries blended with mint lime and sparkling water',
         price      : 180,
         category   : 'Mocktails',
-        image      : 'https://images.unsplash.com/photo-1497534446932-c925b458314e?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfLp2SHQX-7rB-tnMFz0WiJCfILAADZuaT-Yh9Xor7gXToNl72Sak3ufJi&s=10',
         isAvailable: true,
     },
     {
@@ -500,7 +500,7 @@ const menuItems = [
         description: 'Fresh watermelon juice with mint and a hint of lime',
         price      : 160,
         category   : 'Mocktails',
-        image      : 'https://images.unsplash.com/photo-1497534446932-c925b458314e?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKgxAd1bAxXNhCMIPoC7T8uUhTLCWVc_3AIfhBhSUgt6uh8-OZYCowOduW&s=10',
         isAvailable: true,
     },
 
@@ -544,7 +544,7 @@ const menuItems = [
         description: 'Thick creamy yogurt drink blended with fresh Alphonso mangoes',
         price      : 150,
         category   : 'Fresh Juice',
-        image      : 'https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?w=400&auto=format&fit=crop',
+        image      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrV3FkDaKqVS3Ttsdf5rijQTs4nefVES8ixG-k2l3JYJM08zG3AmI6jKg&s=10',
         isAvailable: true,
     },
     {

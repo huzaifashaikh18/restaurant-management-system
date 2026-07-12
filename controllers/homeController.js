@@ -9,7 +9,10 @@ try {
 const home = async (req, res) => {
     try {
         const menuItems = MenuItem
-            ? await MenuItem.find({ isAvailable: true }).limit(4)
+            ? await MenuItem.find({ 
+                isAvailable: true,
+                category: { $in: ['Punjabi', 'Chefs Special', 'Pizza', 'Desserts'] }
+              }).limit(8)
             : [];
         res.render('home', { title: 'Home', menuItems });
     } catch (error) {

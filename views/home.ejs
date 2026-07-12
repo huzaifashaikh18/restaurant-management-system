@@ -40,26 +40,26 @@
 <section class="popular-dishes">
     <h2 class="section-title">Popular Dishes</h2>
     <p class="section-subtitle">A taste of what's waiting for you</p>
-
     <div class="dish-grid">
-        <% if (menuItems && menuItems.length > 0) { %>
-            <% menuItems.forEach(item => {
-                let icon = 'fa-bowl-rice';
-                if (item.category === 'Drinks') icon = 'fa-mug-hot';
-                else if (item.category === 'Desserts') icon = 'fa-ice-cream';
-                else if (item.category === 'Starters') icon = 'fa-pepper-hot';
-            %>
-                <div class="dish-card">
-                    <div class="dish-icon"><i class="fa-solid <%= icon %>"></i></div>
+        <% menuItems.forEach(item => { %>
+            <div class="dish-card">
+                <div class="dish-card-img">
+                    <% if (item.image && !item.image.includes('default')) { %>
+                        <img src="<%= item.image %>" alt="<%= item.name %>">
+                    <% } else { %>
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400" alt="food">
+                    <% } %>
+                </div>
+                <div class="dish-card-body">
                     <h5><%= item.name %></h5>
                     <p><%= item.description %></p>
-                    <span class="dish-price">₹<%= item.price %></span>
+                    <div class="dish-price">₹<%= item.price %></div>
                 </div>
-            <% }) %>
-        <% } else { %>
-            <p style="color:#9ca3af;">Menu coming soon — check back shortly!</p>
-        <% } %>
+            </div>
+        <% }) %>
     </div>
+
+    
 
     <div class="view-all">
         <a href="/menu" class="btn-hero btn-hero-primary">View Full Menu</a>
@@ -73,4 +73,4 @@
     <a href="/reservations" class="btn-hero btn-hero-light">Book a Table</a>
 </section>
 
-<%- include('partials/footer') %>
+<%- include('partials/footer') %>   

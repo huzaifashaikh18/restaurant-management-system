@@ -1,0 +1,66 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+
+<div class="flash-container">
+    <% if (error.length > 0) { %>
+        <div class="alert alert-error">⚠️ <%= error %></div>
+    <% } %>
+    <% if (success.length > 0) { %>
+        <div class="alert alert-success">✅ <%= success %></div>
+    <% } %>
+</div>
+
+<div class="reservation-page">
+    <div class="reservation-card" style="max-width:700px; margin:0 auto;">
+        <div class="reservation-header">
+            <h2>Edit Menu Item</h2>
+            <p>Update the details of "<%= item.name %>"</p>
+        </div>
+
+        <form action="/admin/menu/<%= item._id %>?_method=PUT" method="POST" class="reservation-form">
+            <div class="form-group">
+                <label for="name">Item Name</label>
+                <input type="text" id="name" name="name" value="<%= item.name %>" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" rows="3"><%= item.description %></textarea>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="price">Price (₹)</label>
+                    <input type="number" id="price" name="price" min="1" value="<%= item.price %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" name="category" required>
+                        <% const cats = ['Chefs Special','Starters','Soups','Salads','Gujarati','Punjabi','Chinese','Italian','Pizza','Burgers','Rice & Biryani','Breads','Desserts','Mocktails','Coffee','Fresh Juice','Ice Cream']; %>
+                        <% cats.forEach(c => { %>
+                            <option value="<%= c %>" <%= item.category === c ? 'selected' : '' %>><%= c %></option>
+                        <% }) %>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="image">Image URL</label>
+                <input type="text" id="image" name="image" value="<%= item.image %>">
+            </div>
+
+            <div class="form-group" style="display:flex; align-items:center; gap:0.8rem;">
+                <input type="checkbox" id="isAvailable" name="isAvailable" <%= item.isAvailable ? 'checked' : '' %> style="width:auto;">
+                <label for="isAvailable" style="margin-bottom:0;">Available for ordering</label>
+            </div>
+
+            <button type="submit" class="btn-hero btn-hero-primary" style="width:100%; justify-content:center;">
+                <i class="fa-solid fa-save"></i> Update Menu Item
+            </button>
+        </form>
+
+        <a href="/admin/menu" class="back-link" style="display:block; text-align:center; margin-top:1.2rem;">← Back to Menu List</a>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

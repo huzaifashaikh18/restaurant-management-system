@@ -1,0 +1,51 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+
+<div class="flash-container">
+    <% if (error.length > 0) { %>
+        <div class="alert alert-error">⚠️ <%= error %></div>
+    <% } %>
+    <% if (success.length > 0) { %>
+        <div class="alert alert-success">✅ <%= success %></div>
+    <% } %>
+</div>
+
+<div class="reservation-page">
+    <div class="menu-header">
+        <h2>My Orders</h2>
+        <p>Track your food orders</p>
+    </div>
+
+    <% if (orders.length === 0) { %>
+        <div style="text-align:center; padding:3rem 1rem;">
+            <i class="fa-solid fa-bag-shopping" style="font-size:4rem; color:#e5e7eb; margin-bottom:1rem; display:block;"></i>
+            <p style="color:#888; font-size:1.1rem;">No orders yet.</p>
+            <a href="/menu" class="btn-hero btn-hero-primary" style="margin-top:1rem; display:inline-flex;">Browse Menu</a>
+        </div>
+    <% } else { %>
+        <div class="reservation-list">
+            <% orders.forEach(order => { %>
+                <div class="reservation-item">
+                    <div class="reservation-item-info">
+                        <span class="status-badge status-<%= order.status === 'Delivered' ? 'confirmed' : order.status === 'Cancelled' ? 'cancelled' : 'pending' %>">
+                            <%= order.status %>
+                        </span>
+                        <h5>Order #<%= order._id.toString().slice(-6).toUpperCase() %></h5>
+                        <p>
+                            <i class="fa-solid fa-indian-rupee-sign"></i> ₹<%= order.totalAmount %> &nbsp;|&nbsp;
+                            <i class="fa-solid fa-clock"></i> <%= order.createdAt.toDateString() %> &nbsp;|&nbsp;
+                            <i class="fa-solid fa-credit-card"></i> <%= order.paymentMethod %>
+                        </p>
+                        <p style="color:#6b7280; font-size:0.85rem; margin-top:0.3rem;">
+                            <%= order.items.map(i => i.name + ' x' + i.quantity).join(', ') %>
+                        </p>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    <% } %>
+
+    <a href="/dashboard" class="back-link" style="display:block; text-align:center; margin-top:1.5rem;">← Back to Dashboard</a>
+</div>
+
+<%- include('../partials/footer') %>

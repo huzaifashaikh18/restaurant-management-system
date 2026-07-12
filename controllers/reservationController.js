@@ -20,7 +20,7 @@ const createReservation = async (req, res) => {
         }
 
     await Reservation.create({
-        user: req.session.user.id || req.session.user._id,
+        user: req.session.user.id,
         name,
         phone,
         date: reservationDate,
@@ -30,7 +30,7 @@ const createReservation = async (req, res) => {
     });
 
         req.flash('success', 'Table reserved! We will confirm shortly.');
-        res.redirect('/reservation/myReservations');
+        res.redirect('/reservations/myReservations');
 
     } catch (error) {
         req.flash('error', error.message || 'Could not create reservation.');
@@ -41,7 +41,7 @@ const createReservation = async (req, res) => {
 // GET /reservation/myReservations — logged-in user's own reservations
 const getMyReservations = async (req, res) => {
     try {
-        const reservations = await Reservation.find({ user: req.session.user._id }).sort({ date: 1 });
+        const reservations = await Reservation.find({ user: req.session.user.id }).sort({ date: 1 });
         res.render('reservation/myReservations', { title: 'My Reservations', reservations });
 
     } catch (error) {
@@ -57,23 +57,23 @@ const cancelReservation = async (req, res) => {
 
         if (!reservation) {
             req.flash('error', 'Reservation not found.');
-            return res.redirect('/reservation/myReservations');
+            return res.redirect('/reservations/myReservations');
         }
 
-        if (reservation.user.toString() !== req.session.user._id.toString()) {
+        if (reservation.user.toString() !== req.session.user.id.toString()) {
             req.flash('error', 'You cannot cancel this reservation.');
-            return res.redirect('/reservation/myReservations');
+            return res.redirect('/reservations/myReservations');
         }
 
         reservation.status = 'Cancelled';
         await reservation.save();
 
         req.flash('success', 'Reservation cancelled.');
-        res.redirect('/reservation/myReservations');
+        res.redirect('/reservations/myReservations');
 
     } catch (error) {
         req.flash('error', 'Could not cancel reservation.');
-        res.redirect('/reservation/myReservations');
+        res.redirect('/reservations/myReservations');
     }
 };
 
