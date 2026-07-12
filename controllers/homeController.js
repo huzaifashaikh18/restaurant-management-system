@@ -16,6 +16,7 @@ const home = async (req, res) => {
             : [];
         res.render('home', { title: 'Home', menuItems });
     } catch (error) {
+        console.error('Home controller error:', error);
         res.render('home', { title: 'Home', menuItems: [] });
     }
 };

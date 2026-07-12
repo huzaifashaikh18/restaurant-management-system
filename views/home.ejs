@@ -3,6 +3,7 @@
 
 <!-- HERO SECTION -->
 <section class="hero">
+    <div id="canvas-container"></div>
     <div class="hero-content">
         <h1>Welcome to <span>Our Restaurant</span></h1>
         <p>Authentic flavors, fresh ingredients, made with love — every single day.</p>
@@ -72,5 +73,189 @@
     <p>Book your table now and enjoy a memorable dining experience.</p>
     <a href="/reservations" class="btn-hero btn-hero-light">Book a Table</a>
 </section>
+
+<!-- THREE.JS & GSAP ANIMATIONS -->
+<script>
+    window.addEventListener("load", function() {
+        // ─── THREE.JS 3D SCENE SETUP ──────────────────────────────────────────
+        try {
+            const container = document.getElementById('canvas-container');
+            if (container) {
+                const scene = new THREE.Scene();
+                
+                // Camera
+                const camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 100);
+                camera.position.z = 4.5;
+                
+                // Renderer
+                const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+                renderer.setSize(container.clientWidth, container.clientHeight);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+                container.appendChild(renderer.domElement);
+                
+                // 3D Object: Golden abstract geometry (Golden Plate concept)
+                const geometry = new THREE.TorusKnotGeometry(1.2, 0.35, 150, 20);
+                const material = new THREE.MeshBasicMaterial({
+                    color: 0xf0a500,
+                    wireframe: true,
+                    transparent: true,
+                    opacity: 0.12
+                });
+                const goldPlate = new THREE.Mesh(geometry, material);
+                scene.add(goldPlate);
+                
+                // Particles: Floating gold dust (Abstract ingredients/spices)
+                const particlesCount = 200;
+                const positions = new Float32Array(particlesCount * 3);
+                for(let i=0; i<particlesCount * 3; i++) {
+                    positions[i] = (Math.random() - 0.5) * 8;
+                }
+                const particlesGeometry = new THREE.BufferGeometry();
+                particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                
+                const particlesMaterial = new THREE.PointsMaterial({
+                    size: 0.025,
+                    color: 0xffd700,
+                    transparent: true,
+                    opacity: 0.5
+                });
+                const particleSystem = new THREE.Points(particlesGeometry, particlesMaterial);
+                scene.add(particleSystem);
+                
+                // Interactive mouse rotation tracking
+                let mouseX = 0;
+                let mouseY = 0;
+                let targetX = 0;
+                let targetY = 0;
+                
+                window.addEventListener('mousemove', (e) => {
+                    mouseX = (e.clientX / window.innerWidth) - 0.5;
+                    mouseY = (e.clientY / window.innerHeight) - 0.5;
+                });
+                
+                // Handle resizing
+                window.addEventListener('resize', () => {
+                    camera.aspect = container.clientWidth / container.clientHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(container.clientWidth, container.clientHeight);
+                });
+                
+                // Animation loop
+                const clock = new THREE.Clock();
+                function animate() {
+                    const elapsed = clock.getElapsedTime();
+                    
+                    // Spin geometries
+                    goldPlate.rotation.y = elapsed * 0.1;
+                    goldPlate.rotation.x = elapsed * 0.05;
+                    
+                    particleSystem.rotation.y = elapsed * 0.03;
+                    particleSystem.rotation.x = elapsed * 0.015;
+                    
+                    // Parallax camera easing
+                    targetX = mouseX * 1.5;
+                    targetY = mouseY * 1.5;
+                    
+                    camera.position.x += (targetX - camera.position.x) * 0.05;
+                    camera.position.y += (-targetY - camera.position.y) * 0.05;
+                    camera.lookAt(scene.position);
+                    
+                    renderer.render(scene, camera);
+                    requestAnimationFrame(animate);
+                }
+                animate();
+            }
+        } catch (threeError) {
+            console.error("Three.js initialization failed:", threeError);
+        }
+
+        // ─── GSAP ENHANCED ANIMATIONS ─────────────────────────────────────────
+        if (typeof gsap !== 'undefined') {
+            // Load trigger plugins if needed (ScrollTrigger is loaded in header)
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // Fade-in Hero components on page load
+            const tl = gsap.timeline({
+                onComplete: () => {
+                    gsap.set('.hero-content, .hero-content h1, .hero-content p, .hero-buttons .btn-hero', { clearProps: "all" });
+                }
+            });
+            tl.from('.hero-content', {
+                opacity: 0,
+                y: 60,
+                duration: 1.2,
+                ease: 'power4.out'
+            })
+            .from('.hero-content h1', {
+                opacity: 0,
+                scale: 0.95,
+                duration: 1,
+                ease: 'power3.out'
+            }, "-=0.8")
+            .from('.hero-content p', {
+                opacity: 0,
+                y: 20,
+                duration: 0.8,
+                ease: 'power3.out'
+            }, "-=0.6")
+            .from('.hero-buttons .btn-hero', {
+                opacity: 0,
+                y: 15,
+                stagger: 0.15,
+                duration: 0.6,
+                ease: 'power2.out'
+            }, "-=0.4");
+            
+            // Scroll trigger for Features Section
+            gsap.from('.feature-box', {
+                scrollTrigger: {
+                    trigger: '.features',
+                    start: 'top 80%',
+                    toggleActions: 'play none none none'
+                },
+                opacity: 0,
+                y: 40,
+                stagger: 0.2,
+                duration: 0.8,
+                ease: 'power2.out',
+                onComplete: () => {
+                    gsap.set('.feature-box', { clearProps: "all" });
+                }
+            });
+            
+            // Scroll trigger for Popular Dishes Section
+            gsap.from('.dish-card', {
+                scrollTrigger: {
+                    trigger: '.popular-dishes',
+                    start: 'top 75%'
+                },
+                opacity: 0,
+                y: 50,
+                stagger: 0.15,
+                duration: 0.8,
+                ease: 'back.out(1.2)',
+                onComplete: () => {
+                    gsap.set('.dish-card', { clearProps: "all" });
+                }
+            });
+            
+            // Scroll trigger for CTA Banner
+            gsap.from('.cta-banner h2, .cta-banner p, .cta-banner a', {
+                scrollTrigger: {
+                    trigger: '.cta-banner',
+                    start: 'top 80%'
+                },
+                opacity: 0,
+                y: 30,
+                stagger: 0.15,
+                duration: 0.7,
+                ease: 'power2.out',
+                onComplete: () => {
+                    gsap.set('.cta-banner h2, .cta-banner p, .cta-banner a', { clearProps: "all" });
+                }
+            });
+        }
+    });
+</script>
 
 <%- include('partials/footer') %>   

@@ -30,7 +30,7 @@ const userSchema = new mongoose.Schema(
       select:    false,
     },
 
-    // ✅ Google OAuth fields
+    // Google OAuth fields
     googleId: {
       type:   String,
       unique: true,
@@ -41,7 +41,7 @@ const userSchema = new mongoose.Schema(
       default: '',
     },
 
-    // [SECURITY]: Used to invalidate JWTs issued before a password change.
+    // Used to invalidate JWTs issued before a password change.
     passwordChangedAt: {
       type:   Date,
       select: false,
@@ -50,7 +50,6 @@ const userSchema = new mongoose.Schema(
       type:    String,
       enum:    {
         values:  ['customer', 'owner', 'admin'],
-        
       },
       default: 'customer',
     },
@@ -74,26 +73,19 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-
-
 // ─── PRE-SAVE HOOKS ───────────────────────────────────────────────────────────
+
+// Hash password before saving
 userSchema.pre('save', async function () {
   if (!this.isModified('password')) return;
-  try {
-    const salt    = await bcrypt.genSalt(SALT_ROUNDS);
-    this.password = await bcrypt.hash(this.password, salt);
-  } catch (err) {
-    console.log(err);
-  }
+  const salt = await bcrypt.genSalt(SALT_ROUNDS);
+  this.password = await bcrypt.hash(this.password, salt);
 });
 
+// Set passwordChangedAt when password is changed
 userSchema.pre('save', function () {
   if (!this.isModified('password') || this.isNew) return;
-  try {
-    this.passwordChangedAt = Date.now() - 1000;
-  } catch (err) {
-    console.log(err);
-  }
+  this.passwordChangedAt = Date.now() - 1000;
 });
 
 // ─── VIRTUALS ─────────────────────────────────────────────────────────────────
@@ -158,4 +150,4 @@ userSchema.methods.incrementLoginAttempts = async function () {
   return this.model('User').updateOne({ _id: this._id }, update);
 };
 
-module.exports = mongoose.model('User', userSchema)
+module.exports = mongoose.model('User', userSchema);

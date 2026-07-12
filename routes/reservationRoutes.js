@@ -1,7 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 
-const { isLoggedIn } = require('../middleware/authMiddleware'); 
+const { isLoggedIn } = require('../Middleware/authMiddleware');
 const {
     getReservationForm,
     createReservation,
