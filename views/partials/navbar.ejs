@@ -4,6 +4,7 @@
         <a href="/">Home</a>
         <a href="/menu">Menu</a>
         <% if (user) { %>
+            <a href="/orders">My Orders</a>
             <a href="/dashboard">Dashboard</a>
             <span class="navbar-user">Hello, <%= user.name %>!</span>
             <a href="/logout" class="btn-logout">Logout</a>

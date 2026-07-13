@@ -18,8 +18,27 @@
             <div class="item-price">₹<%= item.price %></div>
 
             <% if (user) { %>
+                <form action="/orders" method="POST" style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 10px;">
+                    <input type="hidden" name="menuItemId" value="<%= item._id %>">
+                    
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <label for="quantity" style="color: #ccc;">Qty:</label>
+                        <input type="number" name="quantity" id="quantity" value="1" min="1" max="20" style="width: 70px; padding: 8px; border-radius: 6px; border: 1px solid #444; background-color: #222; color: #fff;">
+                        
+                        <select name="paymentMethod" style="flex: 1; padding: 8px; border-radius: 6px; border: 1px solid #444; background-color: #222; color: #fff;">
+                            <option value="Cash">Cash</option>
+                            <option value="Card">Card</option>
+                            <option value="UPI">UPI</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary" style="width: 100%; border: none; cursor: pointer; padding: 12px; font-weight: bold;">
+                        <i class="fa-solid fa-cart-shopping"></i> Order Now
+                    </button>
+                </form>
+                
                 <a href="/reservations" class="btn-primary" 
-                   style="display:block; text-align:center; margin-top:1rem;">
+                   style="display:block; text-align:center; margin-top:10px; background: transparent; border: 1px solid #f0a500; color: #f0a500;">
                    Book a Table
                 </a>
             <% } else { %>

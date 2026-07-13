@@ -15,6 +15,7 @@ const reservationSchema = new mongoose.Schema(
         phone: {
             type    : String,
             required: [true, 'Phone number is required'],
+            match   : [/^[0-9]{10}$/, 'Phone number must be exactly 10 digits'],
             trim    : true,
         },
         date: {
